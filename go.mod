@@ -1,6 +1,7 @@
 module github.com/LarkTechnologies/goformation/v4
 
 require (
+	github.com/awslabs/goformation/v4 v4.0.0-00010101000000-000000000000
 	github.com/imdario/mergo v0.3.11
 	github.com/onsi/ginkgo v1.14.1
 	github.com/onsi/gomega v1.10.2
