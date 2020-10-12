@@ -1,4 +1,4 @@
-module github.com/LarkTechnologies/goformation/v4
+module github.com/LarkTechnologies/goformation
 
 require (
 	github.com/awslabs/goformation/v4 v4.0.0-00010101000000-000000000000
