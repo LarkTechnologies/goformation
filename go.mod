@@ -1,4 +1,4 @@
-module github.com/awslabs/goformation/v4
+module github.com/LarkTechnologies/goformation/v4
 
 require (
 	github.com/imdario/mergo v0.3.11
@@ -13,3 +13,5 @@ require (
 )
 
 go 1.13
+
+replace github.com/awslabs/goformation/v4 => ./
