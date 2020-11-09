@@ -9,7 +9,7 @@ import (
 type Bucket_SourceSelectionCriteria struct {
 
 	// SseKmsEncryptedObjects AWS CloudFormation Property
-	// Required: true
+	// Required: false
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket-sourceselectioncriteria.html#cfn-s3-bucket-sourceselectioncriteria-ssekmsencryptedobjects
 	SseKmsEncryptedObjects *Bucket_SseKmsEncryptedObjects `json:"SseKmsEncryptedObjects,omitempty"`
 

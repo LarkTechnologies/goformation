@@ -6,6 +6,7 @@ import (
 	"fmt"
 
 	"github.com/awslabs/goformation/v4/cloudformation/policies"
+	"github.com/awslabs/goformation/v4/cloudformation/tags"
 )
 
 // Repository AWS CloudFormation Resource (AWS::CodeArtifact::Repository)
@@ -31,6 +32,11 @@ type Repository struct {
 	// Required: true
 	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codeartifact-repository.html#cfn-codeartifact-repository-repositoryname
 	RepositoryName string `json:"RepositoryName,omitempty"`
+
+	// Tags AWS CloudFormation Property
+	// Required: false
+	// See: http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codeartifact-repository.html#cfn-codeartifact-repository-tags
+	Tags []tags.Tag `json:"Tags,omitempty"`
 
 	// Upstreams AWS CloudFormation Property
 	// Required: false

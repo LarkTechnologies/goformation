@@ -78,7 +78,9 @@ import (
 	"github.com/awslabs/goformation/v4/cloudformation/iot1click"
 	"github.com/awslabs/goformation/v4/cloudformation/iotanalytics"
 	"github.com/awslabs/goformation/v4/cloudformation/iotevents"
+	"github.com/awslabs/goformation/v4/cloudformation/iotsitewise"
 	"github.com/awslabs/goformation/v4/cloudformation/iotthingsgraph"
+	"github.com/awslabs/goformation/v4/cloudformation/ivs"
 	"github.com/awslabs/goformation/v4/cloudformation/kendra"
 	"github.com/awslabs/goformation/v4/cloudformation/kinesis"
 	"github.com/awslabs/goformation/v4/cloudformation/kinesisanalytics"
@@ -92,6 +94,7 @@ import (
 	"github.com/awslabs/goformation/v4/cloudformation/managedblockchain"
 	"github.com/awslabs/goformation/v4/cloudformation/mediaconvert"
 	"github.com/awslabs/goformation/v4/cloudformation/medialive"
+	"github.com/awslabs/goformation/v4/cloudformation/mediapackage"
 	"github.com/awslabs/goformation/v4/cloudformation/mediastore"
 	"github.com/awslabs/goformation/v4/cloudformation/msk"
 	"github.com/awslabs/goformation/v4/cloudformation/neptune"
@@ -248,6 +251,7 @@ func AllResources() map[string]Resource {
 		"AWS::CloudWatch::CompositeAlarm":                             &cloudwatch.CompositeAlarm{},
 		"AWS::CloudWatch::Dashboard":                                  &cloudwatch.Dashboard{},
 		"AWS::CloudWatch::InsightRule":                                &cloudwatch.InsightRule{},
+		"AWS::CloudWatch::MetricStream":                               &cloudwatch.MetricStream{},
 		"AWS::CodeArtifact::Domain":                                   &codeartifact.Domain{},
 		"AWS::CodeArtifact::Repository":                               &codeartifact.Repository{},
 		"AWS::CodeBuild::Project":                                     &codebuild.Project{},
@@ -408,6 +412,7 @@ func AllResources() map[string]Resource {
 		"AWS::EventSchemas::Registry":                                 &eventschemas.Registry{},
 		"AWS::EventSchemas::RegistryPolicy":                           &eventschemas.RegistryPolicy{},
 		"AWS::EventSchemas::Schema":                                   &eventschemas.Schema{},
+		"AWS::Events::Archive":                                        &events.Archive{},
 		"AWS::Events::EventBus":                                       &events.EventBus{},
 		"AWS::Events::EventBusPolicy":                                 &events.EventBusPolicy{},
 		"AWS::Events::Rule":                                           &events.Rule{},
@@ -469,6 +474,9 @@ func AllResources() map[string]Resource {
 		"AWS::IAM::ServiceLinkedRole":                                 &iam.ServiceLinkedRole{},
 		"AWS::IAM::User":                                              &iam.User{},
 		"AWS::IAM::UserToGroupAddition":                               &iam.UserToGroupAddition{},
+		"AWS::IVS::Channel":                                           &ivs.Channel{},
+		"AWS::IVS::PlaybackKeyPair":                                   &ivs.PlaybackKeyPair{},
+		"AWS::IVS::StreamKey":                                         &ivs.StreamKey{},
 		"AWS::ImageBuilder::Component":                                &imagebuilder.Component{},
 		"AWS::ImageBuilder::DistributionConfiguration":                &imagebuilder.DistributionConfiguration{},
 		"AWS::ImageBuilder::Image":                                    &imagebuilder.Image{},
@@ -483,6 +491,7 @@ func AllResources() map[string]Resource {
 		"AWS::IoT1Click::Project":                                     &iot1click.Project{},
 		"AWS::IoT::Authorizer":                                        &iot.Authorizer{},
 		"AWS::IoT::Certificate":                                       &iot.Certificate{},
+		"AWS::IoT::DomainConfiguration":                               &iot.DomainConfiguration{},
 		"AWS::IoT::Policy":                                            &iot.Policy{},
 		"AWS::IoT::PolicyPrincipalAttachment":                         &iot.PolicyPrincipalAttachment{},
 		"AWS::IoT::ProvisioningTemplate":                              &iot.ProvisioningTemplate{},
@@ -495,6 +504,9 @@ func AllResources() map[string]Resource {
 		"AWS::IoTAnalytics::Pipeline":                                 &iotanalytics.Pipeline{},
 		"AWS::IoTEvents::DetectorModel":                               &iotevents.DetectorModel{},
 		"AWS::IoTEvents::Input":                                       &iotevents.Input{},
+		"AWS::IoTSiteWise::Asset":                                     &iotsitewise.Asset{},
+		"AWS::IoTSiteWise::AssetModel":                                &iotsitewise.AssetModel{},
+		"AWS::IoTSiteWise::Gateway":                                   &iotsitewise.Gateway{},
 		"AWS::IoTThingsGraph::FlowTemplate":                           &iotthingsgraph.FlowTemplate{},
 		"AWS::KMS::Alias":                                             &kms.Alias{},
 		"AWS::KMS::Key":                                               &kms.Key{},
@@ -539,6 +551,11 @@ func AllResources() map[string]Resource {
 		"AWS::MediaLive::Channel":                                     &medialive.Channel{},
 		"AWS::MediaLive::Input":                                       &medialive.Input{},
 		"AWS::MediaLive::InputSecurityGroup":                          &medialive.InputSecurityGroup{},
+		"AWS::MediaPackage::Asset":                                    &mediapackage.Asset{},
+		"AWS::MediaPackage::Channel":                                  &mediapackage.Channel{},
+		"AWS::MediaPackage::OriginEndpoint":                           &mediapackage.OriginEndpoint{},
+		"AWS::MediaPackage::PackagingConfiguration":                   &mediapackage.PackagingConfiguration{},
+		"AWS::MediaPackage::PackagingGroup":                           &mediapackage.PackagingGroup{},
 		"AWS::MediaStore::Container":                                  &mediastore.Container{},
 		"AWS::Neptune::DBCluster":                                     &neptune.DBCluster{},
 		"AWS::Neptune::DBClusterParameterGroup":                       &neptune.DBClusterParameterGroup{},
@@ -595,6 +612,7 @@ func AllResources() map[string]Resource {
 		"AWS::RDS::DBSecurityGroupIngress":                            &rds.DBSecurityGroupIngress{},
 		"AWS::RDS::DBSubnetGroup":                                     &rds.DBSubnetGroup{},
 		"AWS::RDS::EventSubscription":                                 &rds.EventSubscription{},
+		"AWS::RDS::GlobalCluster":                                     &rds.GlobalCluster{},
 		"AWS::RDS::OptionGroup":                                       &rds.OptionGroup{},
 		"AWS::Redshift::Cluster":                                      &redshift.Cluster{},
 		"AWS::Redshift::ClusterParameterGroup":                        &redshift.ClusterParameterGroup{},
@@ -3450,6 +3468,30 @@ func (t *Template) GetCloudWatchInsightRuleWithName(name string) (*cloudwatch.In
 		}
 	}
 	return nil, fmt.Errorf("resource %q of type cloudwatch.InsightRule not found", name)
+}
+
+// GetAllCloudWatchMetricStreamResources retrieves all cloudwatch.MetricStream items from an AWS CloudFormation template
+func (t *Template) GetAllCloudWatchMetricStreamResources() map[string]*cloudwatch.MetricStream {
+	results := map[string]*cloudwatch.MetricStream{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *cloudwatch.MetricStream:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetCloudWatchMetricStreamWithName retrieves all cloudwatch.MetricStream items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetCloudWatchMetricStreamWithName(name string) (*cloudwatch.MetricStream, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *cloudwatch.MetricStream:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type cloudwatch.MetricStream not found", name)
 }
 
 // GetAllCodeArtifactDomainResources retrieves all codeartifact.Domain items from an AWS CloudFormation template
@@ -7292,6 +7334,30 @@ func (t *Template) GetEventSchemasSchemaWithName(name string) (*eventschemas.Sch
 	return nil, fmt.Errorf("resource %q of type eventschemas.Schema not found", name)
 }
 
+// GetAllEventsArchiveResources retrieves all events.Archive items from an AWS CloudFormation template
+func (t *Template) GetAllEventsArchiveResources() map[string]*events.Archive {
+	results := map[string]*events.Archive{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *events.Archive:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetEventsArchiveWithName retrieves all events.Archive items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetEventsArchiveWithName(name string) (*events.Archive, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *events.Archive:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type events.Archive not found", name)
+}
+
 // GetAllEventsEventBusResources retrieves all events.EventBus items from an AWS CloudFormation template
 func (t *Template) GetAllEventsEventBusResources() map[string]*events.EventBus {
 	results := map[string]*events.EventBus{}
@@ -8756,6 +8822,78 @@ func (t *Template) GetIAMUserToGroupAdditionWithName(name string) (*iam.UserToGr
 	return nil, fmt.Errorf("resource %q of type iam.UserToGroupAddition not found", name)
 }
 
+// GetAllIVSChannelResources retrieves all ivs.Channel items from an AWS CloudFormation template
+func (t *Template) GetAllIVSChannelResources() map[string]*ivs.Channel {
+	results := map[string]*ivs.Channel{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *ivs.Channel:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetIVSChannelWithName retrieves all ivs.Channel items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetIVSChannelWithName(name string) (*ivs.Channel, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *ivs.Channel:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type ivs.Channel not found", name)
+}
+
+// GetAllIVSPlaybackKeyPairResources retrieves all ivs.PlaybackKeyPair items from an AWS CloudFormation template
+func (t *Template) GetAllIVSPlaybackKeyPairResources() map[string]*ivs.PlaybackKeyPair {
+	results := map[string]*ivs.PlaybackKeyPair{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *ivs.PlaybackKeyPair:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetIVSPlaybackKeyPairWithName retrieves all ivs.PlaybackKeyPair items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetIVSPlaybackKeyPairWithName(name string) (*ivs.PlaybackKeyPair, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *ivs.PlaybackKeyPair:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type ivs.PlaybackKeyPair not found", name)
+}
+
+// GetAllIVSStreamKeyResources retrieves all ivs.StreamKey items from an AWS CloudFormation template
+func (t *Template) GetAllIVSStreamKeyResources() map[string]*ivs.StreamKey {
+	results := map[string]*ivs.StreamKey{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *ivs.StreamKey:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetIVSStreamKeyWithName retrieves all ivs.StreamKey items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetIVSStreamKeyWithName(name string) (*ivs.StreamKey, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *ivs.StreamKey:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type ivs.StreamKey not found", name)
+}
+
 // GetAllImageBuilderComponentResources retrieves all imagebuilder.Component items from an AWS CloudFormation template
 func (t *Template) GetAllImageBuilderComponentResources() map[string]*imagebuilder.Component {
 	results := map[string]*imagebuilder.Component{}
@@ -9092,6 +9230,30 @@ func (t *Template) GetIoTCertificateWithName(name string) (*iot.Certificate, err
 	return nil, fmt.Errorf("resource %q of type iot.Certificate not found", name)
 }
 
+// GetAllIoTDomainConfigurationResources retrieves all iot.DomainConfiguration items from an AWS CloudFormation template
+func (t *Template) GetAllIoTDomainConfigurationResources() map[string]*iot.DomainConfiguration {
+	results := map[string]*iot.DomainConfiguration{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *iot.DomainConfiguration:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetIoTDomainConfigurationWithName retrieves all iot.DomainConfiguration items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetIoTDomainConfigurationWithName(name string) (*iot.DomainConfiguration, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *iot.DomainConfiguration:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type iot.DomainConfiguration not found", name)
+}
+
 // GetAllIoTPolicyResources retrieves all iot.Policy items from an AWS CloudFormation template
 func (t *Template) GetAllIoTPolicyResources() map[string]*iot.Policy {
 	results := map[string]*iot.Policy{}
@@ -9378,6 +9540,78 @@ func (t *Template) GetIoTEventsInputWithName(name string) (*iotevents.Input, err
 		}
 	}
 	return nil, fmt.Errorf("resource %q of type iotevents.Input not found", name)
+}
+
+// GetAllIoTSiteWiseAssetResources retrieves all iotsitewise.Asset items from an AWS CloudFormation template
+func (t *Template) GetAllIoTSiteWiseAssetResources() map[string]*iotsitewise.Asset {
+	results := map[string]*iotsitewise.Asset{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *iotsitewise.Asset:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetIoTSiteWiseAssetWithName retrieves all iotsitewise.Asset items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetIoTSiteWiseAssetWithName(name string) (*iotsitewise.Asset, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *iotsitewise.Asset:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type iotsitewise.Asset not found", name)
+}
+
+// GetAllIoTSiteWiseAssetModelResources retrieves all iotsitewise.AssetModel items from an AWS CloudFormation template
+func (t *Template) GetAllIoTSiteWiseAssetModelResources() map[string]*iotsitewise.AssetModel {
+	results := map[string]*iotsitewise.AssetModel{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *iotsitewise.AssetModel:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetIoTSiteWiseAssetModelWithName retrieves all iotsitewise.AssetModel items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetIoTSiteWiseAssetModelWithName(name string) (*iotsitewise.AssetModel, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *iotsitewise.AssetModel:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type iotsitewise.AssetModel not found", name)
+}
+
+// GetAllIoTSiteWiseGatewayResources retrieves all iotsitewise.Gateway items from an AWS CloudFormation template
+func (t *Template) GetAllIoTSiteWiseGatewayResources() map[string]*iotsitewise.Gateway {
+	results := map[string]*iotsitewise.Gateway{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *iotsitewise.Gateway:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetIoTSiteWiseGatewayWithName retrieves all iotsitewise.Gateway items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetIoTSiteWiseGatewayWithName(name string) (*iotsitewise.Gateway, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *iotsitewise.Gateway:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type iotsitewise.Gateway not found", name)
 }
 
 // GetAllIoTThingsGraphFlowTemplateResources retrieves all iotthingsgraph.FlowTemplate items from an AWS CloudFormation template
@@ -10434,6 +10668,126 @@ func (t *Template) GetMediaLiveInputSecurityGroupWithName(name string) (*mediali
 		}
 	}
 	return nil, fmt.Errorf("resource %q of type medialive.InputSecurityGroup not found", name)
+}
+
+// GetAllMediaPackageAssetResources retrieves all mediapackage.Asset items from an AWS CloudFormation template
+func (t *Template) GetAllMediaPackageAssetResources() map[string]*mediapackage.Asset {
+	results := map[string]*mediapackage.Asset{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *mediapackage.Asset:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetMediaPackageAssetWithName retrieves all mediapackage.Asset items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetMediaPackageAssetWithName(name string) (*mediapackage.Asset, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *mediapackage.Asset:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type mediapackage.Asset not found", name)
+}
+
+// GetAllMediaPackageChannelResources retrieves all mediapackage.Channel items from an AWS CloudFormation template
+func (t *Template) GetAllMediaPackageChannelResources() map[string]*mediapackage.Channel {
+	results := map[string]*mediapackage.Channel{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *mediapackage.Channel:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetMediaPackageChannelWithName retrieves all mediapackage.Channel items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetMediaPackageChannelWithName(name string) (*mediapackage.Channel, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *mediapackage.Channel:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type mediapackage.Channel not found", name)
+}
+
+// GetAllMediaPackageOriginEndpointResources retrieves all mediapackage.OriginEndpoint items from an AWS CloudFormation template
+func (t *Template) GetAllMediaPackageOriginEndpointResources() map[string]*mediapackage.OriginEndpoint {
+	results := map[string]*mediapackage.OriginEndpoint{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *mediapackage.OriginEndpoint:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetMediaPackageOriginEndpointWithName retrieves all mediapackage.OriginEndpoint items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetMediaPackageOriginEndpointWithName(name string) (*mediapackage.OriginEndpoint, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *mediapackage.OriginEndpoint:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type mediapackage.OriginEndpoint not found", name)
+}
+
+// GetAllMediaPackagePackagingConfigurationResources retrieves all mediapackage.PackagingConfiguration items from an AWS CloudFormation template
+func (t *Template) GetAllMediaPackagePackagingConfigurationResources() map[string]*mediapackage.PackagingConfiguration {
+	results := map[string]*mediapackage.PackagingConfiguration{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *mediapackage.PackagingConfiguration:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetMediaPackagePackagingConfigurationWithName retrieves all mediapackage.PackagingConfiguration items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetMediaPackagePackagingConfigurationWithName(name string) (*mediapackage.PackagingConfiguration, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *mediapackage.PackagingConfiguration:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type mediapackage.PackagingConfiguration not found", name)
+}
+
+// GetAllMediaPackagePackagingGroupResources retrieves all mediapackage.PackagingGroup items from an AWS CloudFormation template
+func (t *Template) GetAllMediaPackagePackagingGroupResources() map[string]*mediapackage.PackagingGroup {
+	results := map[string]*mediapackage.PackagingGroup{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *mediapackage.PackagingGroup:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetMediaPackagePackagingGroupWithName retrieves all mediapackage.PackagingGroup items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetMediaPackagePackagingGroupWithName(name string) (*mediapackage.PackagingGroup, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *mediapackage.PackagingGroup:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type mediapackage.PackagingGroup not found", name)
 }
 
 // GetAllMediaStoreContainerResources retrieves all mediastore.Container items from an AWS CloudFormation template
@@ -11778,6 +12132,30 @@ func (t *Template) GetRDSEventSubscriptionWithName(name string) (*rds.EventSubsc
 		}
 	}
 	return nil, fmt.Errorf("resource %q of type rds.EventSubscription not found", name)
+}
+
+// GetAllRDSGlobalClusterResources retrieves all rds.GlobalCluster items from an AWS CloudFormation template
+func (t *Template) GetAllRDSGlobalClusterResources() map[string]*rds.GlobalCluster {
+	results := map[string]*rds.GlobalCluster{}
+	for name, untyped := range t.Resources {
+		switch resource := untyped.(type) {
+		case *rds.GlobalCluster:
+			results[name] = resource
+		}
+	}
+	return results
+}
+
+// GetRDSGlobalClusterWithName retrieves all rds.GlobalCluster items from an AWS CloudFormation template
+// whose logical ID matches the provided name. Returns an error if not found.
+func (t *Template) GetRDSGlobalClusterWithName(name string) (*rds.GlobalCluster, error) {
+	if untyped, ok := t.Resources[name]; ok {
+		switch resource := untyped.(type) {
+		case *rds.GlobalCluster:
+			return resource, nil
+		}
+	}
+	return nil, fmt.Errorf("resource %q of type rds.GlobalCluster not found", name)
 }
 
 // GetAllRDSOptionGroupResources retrieves all rds.OptionGroup items from an AWS CloudFormation template
