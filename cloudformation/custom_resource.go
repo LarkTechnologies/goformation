@@ -14,8 +14,9 @@ type CustomResource struct {
 	// _deletionPolicy represents a CloudFormation DeletionPolicy
 	_deletionPolicy policies.DeletionPolicy
 
+	// Quick fix for https://github.com/awslabs/goformation/issues/270
 	// _dependsOn stores the logical ID of the resources to be created before this resource
-	_dependsOn []string
+	DependsOn []string `json:"DependsOn,omitempty"`
 
 	// _metadata stores structured data associated with this resource
 	_metadata map[string]interface{}
@@ -26,16 +27,17 @@ func (r *CustomResource) AWSCloudFormationType() string {
 	return r.Type
 }
 
+// Quick fix for https://github.com/awslabs/goformation/issues/270
 // DependsOn returns a slice of logical ID names this resource depends on.
 // see: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html
-func (r *CustomResource) DependsOn() []string {
-	return r._dependsOn
-}
+// func (r *CustomResource) DependsOn() []string {
+// 	return r._dependsOn
+// }
 
 // SetDependsOn specify that the creation of this resource follows another.
 // see: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html
 func (r *CustomResource) SetDependsOn(dependencies []string) {
-	r._dependsOn = dependencies
+	r.DependsOn = dependencies
 }
 
 // Metadata returns the metadata associated with this resource.
